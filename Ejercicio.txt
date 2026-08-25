@@ -1,0 +1,356 @@
+# 1. Título del ejercicio
+
+## 🏭 Sistema de Monitoreo y Mantenimiento de Equipos Industriales
+
+**Nivel: INTERMEDIO**
+
+---
+
+# 2. Descripción del problema
+
+Una empresa cuenta con diferentes equipos industriales que necesitan ser monitoreados para conocer su estado, registrar horas de funcionamiento y determinar cuándo requieren mantenimiento.
+
+Debes desarrollar una aplicación en **Java** que permita gestionar distintos tipos de equipos dentro de un mismo sistema.
+
+Los equipos pueden ser, por ejemplo:
+
+* 🏭 **Máquinas de producción**
+* 🤖 **Robots industriales**
+* 📡 **Sensores industriales**
+
+Todos los equipos comparten información general, pero cada tipo tiene características y comportamientos específicos.
+
+El sistema deberá permitir registrar los equipos en un arreglo, consultar su información, analizar su estado operativo y realizar acciones relacionadas con su mantenimiento.
+
+---
+
+# 3. Requisitos funcionales
+
+## 🔹 1. Clase abstracta `EquipoIndustrial`
+
+Debes crear una clase abstracta llamada:
+
+```text
+EquipoIndustrial
+```
+
+Debe contener atributos encapsulados relacionados con un equipo, como mínimo:
+
+* Código
+* Nombre
+* Fabricante
+* Horas de funcionamiento
+* Estado
+* Activo
+
+La clase debe incluir:
+
+* Constructor con parámetros.
+* Constructor alternativo utilizando **sobrecarga de constructores**.
+* Getters.
+* Setters con validaciones adecuadas.
+* Un método para mostrar la información general.
+* Un método para registrar nuevas horas de funcionamiento.
+* Al menos un **método abstracto** que cada tipo de equipo deba implementar.
+* Al menos un método que pueda ser sobrescrito mediante `@Override`.
+
+---
+
+## 🔹 2. Crear una interfaz
+
+Debes crear una interfaz relacionada con el mantenimiento de los equipos.
+
+La interfaz debe definir comportamientos para:
+
+* Realizar mantenimiento.
+* Consultar información de mantenimiento.
+
+Cada tipo de equipo deberá implementar esta interfaz.
+
+---
+
+## 🔹 3. Crear la clase `MaquinaProduccion`
+
+Debe heredar de `EquipoIndustrial`.
+
+Debe incluir atributos propios, como mínimo:
+
+* Tipo de máquina.
+* Capacidad de producción por hora.
+* Temperatura actual.
+* Número de operadores requeridos.
+
+Debes:
+
+* Utilizar `super`.
+* Implementar los métodos abstractos.
+* Sobrescribir el método correspondiente mediante `@Override`.
+* Implementar la interfaz de mantenimiento.
+* Mostrar información específica de la máquina.
+
+---
+
+## 🔹 4. Crear la clase `RobotIndustrial`
+
+Debe heredar de `EquipoIndustrial`.
+
+Debe incluir atributos propios, como mínimo:
+
+* Tipo de robot.
+* Número de ejes.
+* Nivel de precisión.
+* Capacidad de carga.
+
+Debes:
+
+* Utilizar herencia.
+* Utilizar `super`.
+* Implementar los métodos abstractos.
+* Sobrescribir métodos cuando corresponda.
+* Implementar la interfaz de mantenimiento.
+
+---
+
+## 🔹 5. Crear la clase `SensorIndustrial`
+
+Debe heredar de `EquipoIndustrial`.
+
+Debe incluir atributos propios, como mínimo:
+
+* Tipo de sensor.
+* Valor actual de lectura.
+* Unidad de medida.
+* Rango máximo permitido.
+
+Debes implementar comportamientos específicos para determinar si el sensor está funcionando dentro de un rango aceptable.
+
+---
+
+## 🔹 6. Sobrecarga de métodos
+
+Debes implementar al menos una funcionalidad utilizando **sobrecarga de métodos**.
+
+Por ejemplo, una operación relacionada con el monitoreo o registro de funcionamiento deberá poder realizarse de diferentes formas dependiendo de los parámetros recibidos.
+
+También debes incluir al menos una **sobrecarga de constructores** dentro del sistema.
+
+---
+
+## 🔹 7. Arreglo principal
+
+En el `main`, debes crear un arreglo capaz de almacenar objetos de tipo:
+
+```text
+EquipoIndustrial[]
+```
+
+El arreglo deberá poder almacenar objetos de diferentes tipos:
+
+* `MaquinaProduccion`
+* `RobotIndustrial`
+* `SensorIndustrial`
+
+Debes utilizar **polimorfismo** para almacenar los objetos.
+
+También debes llevar un contador de equipos registrados.
+
+---
+
+## 🔹 8. Menú principal
+
+El programa debe funcionar mediante un menú interactivo utilizando `while` o una estructura equivalente.
+
+El menú debe incluir, como mínimo, las siguientes opciones:
+
+```text
+1. Registrar equipo
+2. Mostrar todos los equipos
+3. Buscar equipo por código
+4. Mostrar equipos activos
+5. Mostrar equipos inactivos
+6. Registrar horas de funcionamiento
+7. Realizar mantenimiento
+8. Mostrar equipo con mayor cantidad de horas de funcionamiento
+9. Mostrar cantidad de equipos por tipo
+10. Analizar estado de sensores
+11. Salir
+```
+
+La opción ingresada debe validarse correctamente.
+
+Debes utilizar `switch` para controlar las opciones del menú.
+
+---
+
+## 🔹 9. Registrar equipo
+
+El usuario debe poder seleccionar qué tipo de equipo desea registrar:
+
+```text
+1. Máquina de producción
+2. Robot industrial
+3. Sensor industrial
+```
+
+Después, el programa debe solicitar los datos generales y específicos según el tipo seleccionado.
+
+Debes validar:
+
+* Valores numéricos.
+* Cadenas vacías.
+* Valores que no puedan ser negativos.
+* Opciones booleanas.
+* Opciones inválidas.
+
+El nuevo objeto debe almacenarse en el arreglo principal.
+
+---
+
+## 🔹 10. Mostrar todos los equipos
+
+El sistema debe recorrer el arreglo utilizando un ciclo `for`.
+
+Debe mostrar la información de todos los equipos registrados.
+
+Cada objeto debe mostrar su propia información utilizando **polimorfismo y métodos sobrescritos**.
+
+---
+
+## 🔹 11. Buscar equipo por código
+
+El usuario debe ingresar un código.
+
+El sistema debe:
+
+* Buscar el equipo dentro del arreglo.
+* Mostrar toda su información si existe.
+* Mostrar un mensaje si no se encuentra.
+
+Debes utilizar una variable booleana para controlar si el equipo fue encontrado.
+
+Cuando se encuentre el equipo, puedes utilizar `break` para detener la búsqueda.
+
+---
+
+## 🔹 12. Mostrar equipos activos e inactivos
+
+Debes crear funcionalidades independientes para:
+
+* Mostrar equipos activos.
+* Mostrar equipos inactivos.
+
+Si no existen equipos del estado solicitado, debe mostrarse un mensaje adecuado.
+
+---
+
+## 🔹 13. Registrar horas de funcionamiento
+
+El usuario debe buscar un equipo mediante su código.
+
+Después deberá registrar una nueva cantidad de horas de funcionamiento.
+
+El programa debe validar que:
+
+* El valor sea numérico.
+* El valor sea válido.
+* Las horas registradas mantengan una lógica consistente con el funcionamiento del equipo.
+
+---
+
+## 🔹 14. Realizar mantenimiento
+
+El usuario debe buscar un equipo por código.
+
+Una vez encontrado, debes ejecutar el comportamiento de mantenimiento utilizando la interfaz creada.
+
+El programa debe aplicar **casting** cuando sea necesario para acceder al comportamiento definido por la interfaz.
+
+---
+
+## 🔹 15. Equipo con mayor tiempo de funcionamiento
+
+El programa debe recorrer el arreglo y determinar cuál equipo tiene la mayor cantidad de horas de funcionamiento.
+
+Debe mostrar toda la información del equipo encontrado.
+
+---
+
+## 🔹 16. Cantidad de equipos por tipo
+
+El sistema debe contar cuántos objetos existen de cada tipo:
+
+* Máquinas de producción.
+* Robots industriales.
+* Sensores industriales.
+
+Debes identificar el tipo real de cada objeto utilizando las herramientas de Java adecuadas para trabajar con **polimorfismo y tipos de objetos**.
+
+Al final, muestra:
+
+```text
+Cantidad de máquinas:
+Cantidad de robots:
+Cantidad de sensores:
+Total de equipos:
+```
+
+---
+
+## 🔹 17. Analizar estado de sensores
+
+El programa debe recorrer únicamente los objetos que correspondan a sensores.
+
+Para cada sensor, debe analizar su lectura actual y determinar si:
+
+* Está dentro del rango permitido.
+* Supera el límite establecido.
+* Requiere atención.
+
+Debes utilizar:
+
+* Condicionales.
+* Operadores.
+* Casting cuando sea necesario.
+* Polimorfismo.
+
+---
+
+# 4. Restricciones
+
+* Utiliza únicamente **arreglos**, no colecciones como `ArrayList`.
+* No utilices bases de datos ni archivos.
+* No utilices librerías externas.
+* La información debe almacenarse únicamente durante la ejecución del programa.
+* Debes aplicar **encapsulamiento**; los atributos no deben ser públicos.
+* Debes utilizar **herencia, polimorfismo, clase abstracta, métodos abstractos e interfaces**.
+* Debes incluir **sobrecarga de métodos y sobrecarga de constructores**.
+* El menú debe utilizar `switch`.
+* Debes utilizar ciclos `while` y `for`.
+* Debes utilizar `break` y/o `continue` únicamente cuando tengan una función lógica dentro del programa.
+* El código debe estar organizado en clases separadas.
+
+---
+
+# 5. Ejemplo de menú
+
+```text
+=========================================
+ SISTEMA DE MONITOREO INDUSTRIAL
+=========================================
+
+1. Registrar equipo
+2. Mostrar todos los equipos
+3. Buscar equipo por código
+4. Mostrar equipos activos
+5. Mostrar equipos inactivos
+6. Registrar horas de funcionamiento
+7. Realizar mantenimiento
+8. Equipo con mayor tiempo de funcionamiento
+9. Cantidad de equipos por tipo
+10. Analizar estado de sensores
+11. Salir
+
+Seleccione una opción:
+```
+
+Este ejercicio es distinto a los proyectos anteriores y está diseñado para integrar prácticamente **todos los temas que ya has estudiado en Java**, especialmente **POO, herencia, polimorfismo, casting, clases abstractas, métodos abstractos e interfaces**, dentro de un contexto de **automatización industrial**.
