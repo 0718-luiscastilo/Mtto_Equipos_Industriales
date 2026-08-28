@@ -1,6 +1,6 @@
 package codigo;
 
-public class Maquina {
+public abstract class Maquina {
     private String codigo;
     private String nombre;
     private String modelo;
@@ -56,22 +56,22 @@ public class Maquina {
         return activa;
     }
     public void setCodigo(String codigo){
-        if(codigo != null && !codigo.isEmpty()){
+        if(codigo != null && !codigo.isBlank()){
             this.codigo = codigo;
         }
     }
     public void setNombre(String nombre){
-        if(nombre != null && !nombre.isEmpty()){
+        if(nombre != null && !nombre.isBlank()){
             this.nombre = nombre;
         }
     }
     public void setModelo(String modelo){
-        if(modelo != null && !modelo.isEmpty()){
+        if(modelo != null && !modelo.isBlank()){
             this.modelo = modelo;
         }
     }
     public void setTipo(String tipo){
-        if(tipo != null && !tipo.isEmpty()){
+        if(tipo != null && !tipo.isBlank()){
             this.tipo = tipo;
         }
     }
@@ -90,7 +90,7 @@ public class Maquina {
             this.cantidadPiezas = cantidadPiezas;
         }
     }
-    public void setActiva(boolean activa){
+    public void isActiva(boolean activa){
         this.activa = activa;
     }
     public void mostrarInformacion(){
@@ -168,5 +168,6 @@ public void registrarProduccion(int piezasProducidas, String turno) {
         System.out.println( "Cantidad total de piezas: " + getCantidadPiezas());
     }
 }
+public abstract void realizarOperacion();
 
 }
