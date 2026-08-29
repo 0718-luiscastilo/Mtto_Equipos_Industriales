@@ -7,7 +7,7 @@ public class MaquinaProduccion extends Maquina {
 
     public MaquinaProduccion(String codigo, String nombre, String modelo, String tipo, int temperatura, int velocidad, 
         int cantidadPiezas, boolean activa, String tipoProducto, int piezasPorHora, boolean modoAutomatico){
-            super(codigo, nombre, modelo, tipoProducto, temperatura, velocidad, cantidadPiezas, activa);
+            super(codigo, nombre, modelo, tipo, temperatura, velocidad, cantidadPiezas, activa);
             this.tipoProducto = tipoProducto;
             this.piezasPorHora = piezasPorHora;
             this.modoAutomatico = modoAutomatico;
@@ -21,17 +21,17 @@ public class MaquinaProduccion extends Maquina {
     public boolean getModoAutomatico(){
         return modoAutomatico;
     }
-    public void setTipo(String tipoProducto){
+    public void setTipoProducto(String tipoProducto){
         if(tipoProducto != null && !tipoProducto.isBlank()){
             this.tipoProducto = tipoProducto;
         }
     }
-    public void setTemperatura(int piezasPorHora){
+    public void setPiezasPorHora(int piezasPorHora){
         if(piezasPorHora >= 0){
             this.piezasPorHora = piezasPorHora;
         }
     }
-    public void isActiva(boolean modoAutomatico){
+    public void ismodoAutomatico(boolean modoAutomatico){
         this.modoAutomatico = modoAutomatico;
     }
     @Override
@@ -46,6 +46,12 @@ public class MaquinaProduccion extends Maquina {
         System.out.println("Piezas por Hora: " + piezasPorHora);
         System.out.println("Modo: " + modoAutomatico);
     }
-
-    
+    public void activarModoAutomatico(){
+        modoAutomatico = true;
+        System.out.println("El modo Ayutomatico esta activado");
+    }
+    public void desactivarModoAutomatico(){
+        modoAutomatico = false;
+        System.out.println("El modo Ayutomatico esta desactivado");
+    } 
 }
