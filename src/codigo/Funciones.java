@@ -3,6 +3,7 @@ package codigo;
 import java.util.Scanner;
 
 public class Funciones {
+    static Scanner scanner = new Scanner(System.in); 
     
     public static int mostrarMenu(Scanner scanner) { 
         int op; 
@@ -12,16 +13,13 @@ public class Funciones {
             System.out.println(); System.out.println("1. Registrar máquina"); 
             System.out.println("2. Mostrar todas las máquinas"); 
             System.out.println("3. Buscar máquina por código"); 
-            System.out.println("4. Mostrar máquinas activas"); 
-            System.out.println("5. Mostrar máquinas inactivas"); 
-            System.out.println("6. Iniciar máquina"); 
-            System.out.println("7. Detener máquina"); 
-            System.out.println("8. Registrar producción"); 
-            System.out.println("9. Mostrar máquina con mayor producción"); 
-            System.out.println("10. Realizar operación"); 
-            System.out.println("11. Realizar mantenimiento"); 
-            System.out.println("12. Monitorear máquina"); 
-            System.out.println("13. Salir"); 
+            System.out.println("4. Mostrar Estados de Maquinas "); 
+            System.out.println("5. Calcular Promedio de Temperatura de Maquinas "); 
+            System.out.println("6. Calulasr Maquinas por tipo"); 
+            System.out.println("7. Mostrar Tipos de Maquinas"); 
+            System.out.println("8. Realizar mantenimiento"); 
+            System.out.println("9. Monitorear máquina"); 
+            System.out.println("10. Salir"); 
             System.out.print("Seleccione una opción: "); 
             while (!scanner.hasNextInt()) { 
                 System.out.println("Debe ingresar un número."); 
@@ -29,10 +27,10 @@ public class Funciones {
                 System.out.print("Seleccione una opción: "); 
             } 
             op = scanner.nextInt(); 
-            if (op < 1 || op > 13) { 
+            if (op < 1 || op > 10) { 
                 System.out.println("Opción inválida. Seleccione una opción entre 1 y 13.");
             } 
-        } while (op < 1 || op > 13); return op; 
+        } while (op < 1 || op > 10); return op; 
     }
     public static void registrarMaquina(Maquina[] maquinas, int[] totalMaquinas, int MAX_MAQUINAS){
         Scanner scanner = new Scanner(System.in); 
@@ -208,6 +206,81 @@ public class Funciones {
         System.out.println("====================================");
         System.out.println("Máquina registrada correctamente.");
         System.out.println("====================================");
+        scanner.close();
     }
-    
+    public static void mostrarTodasLasMaquinas(Maquina[] maquinas, int totalMaquinas){
+        if(totalMaquinas ==0){
+            System.out.println("No hay ninguna maquina registrada");
+            return;
+        }
+        for(int i =0;i<totalMaquinas;i++){
+            maquinas[i].mostrarInformacion();
+        }
+    }
+    public static void buscarMaquinaPorCodigo(Maquina[] maquinas, int totalMaquinas){
+        boolean encontrado = false;
+        if(totalMaquinas ==0){
+            System.out.println("No hay ninguna maquina registrada");
+            return;
+        }
+        System.out.print("Ingrese el codigo: ");
+        String buscarcodigo =scanner.nextLine();
+        while(buscarcodigo.isBlank()){
+            System.out.println("Ingrese codigo valido.");
+            buscarcodigo= scanner.nextLine();
+        }
+        for(int i =0;i<totalMaquinas;i++){
+            if(maquinas[i].getCodigo().equalsIgnoreCase(buscarcodigo)){
+                encontrado=true;
+                maquinas[i].mostrarInformacion();
+            }  
+        }
+        if(!encontrado){
+            System.out.println("No existe minguna maquina comn ese codigo.");
+        }
+    }
+    public static void mostrarMaquinasPorEstado(Maquina[] maquinas, int totalMaquinas){
+        boolean encontrado = false;
+        if(totalMaquinas ==0){
+            System.out.println("No hay ninguna maquina registrada");
+            return;
+        }
+        System.out.println("1. Mostrar máquinas activas"); 
+        System.out.println("2. Mostrar máquinas inactivas"); 
+        System.out.print("Seleccione una opción: "); 
+        int opcion = scanner.nextInt(); 
+
+        boolean buscarEstado;
+        if (opcion == 1) { 
+            buscarEstado = true; 
+        }else if (opcion == 2) { 
+            buscarEstado = false; 
+        } else { 
+            System.out.println("Opción no válida."); 
+            return; 
+        }
+        for(int i =0;i<totalMaquinas;i++){
+            if(maquinas[i].getActiva() == buscarEstado){
+                encontrado = true;
+                maquinas[i].mostrarInformacion();
+            }
+        }
+        if(!encontrado){
+            System.out.println("No existe minguna maquina comn ese estado.");
+        }
+    }
+    public static void calcularTemperaturaPromedio(Maquina[] maquinas, int totalMaquinas){
+        if(totalMaquinas ==0){
+            System.out.println("No hay ninguna maquina registrada");
+            return;
+        }
+        double sumaTemperatura =0;
+        for(int i =0;i<totalMaquinas;i++){
+            sumaTemperatura += maquinas[i].getTemperatura();
+        }
+        double promedioTemperatura = sumaTemperatura / totalMaquinas;
+
+        System.out.println("==========================================");
+        System.out.println("El promedio de temperatura de las máquinas es: " + promedioTemperatura + " °C");
+    }
 }
