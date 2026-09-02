@@ -10,16 +10,16 @@ public class Funciones {
         do { 
             System.out.println(); 
             System.out.println("====== SISTEMA DE GESTIÓN DE MÁQUINAS ======"); 
-            System.out.println(); System.out.println("1. Registrar máquina"); 
+            System.out.println(); 
+            System.out.println("1. Registrar máquina"); 
             System.out.println("2. Mostrar todas las máquinas"); 
             System.out.println("3. Buscar máquina por código"); 
             System.out.println("4. Mostrar Estados de Maquinas "); 
             System.out.println("5. Calcular Promedio de Temperatura de Maquinas "); 
-            System.out.println("6. Calulasr Maquinas por tipo"); 
-            System.out.println("7. Mostrar Tipos de Maquinas"); 
-            System.out.println("8. Realizar mantenimiento"); 
-            System.out.println("9. Monitorear máquina"); 
-            System.out.println("10. Salir"); 
+            System.out.println("6. Mostrar Tipos de Maquinas"); 
+            System.out.println("7. Realizar mantenimiento"); 
+            System.out.println("8. Monitorear máquina"); 
+            System.out.println("9. Salir"); 
             System.out.print("Seleccione una opción: "); 
             while (!scanner.hasNextInt()) { 
                 System.out.println("Debe ingresar un número."); 
@@ -27,8 +27,8 @@ public class Funciones {
                 System.out.print("Seleccione una opción: "); 
             } 
             op = scanner.nextInt(); 
-            if (op < 1 || op > 10) { 
-                System.out.println("Opción inválida. Seleccione una opción entre 1 y 13.");
+            if (op < 1 || op > 9) { 
+                System.out.println("Opción inválida. Seleccione una opción entre 1 y 9.");
             } 
         } while (op < 1 || op > 10); return op; 
     }
