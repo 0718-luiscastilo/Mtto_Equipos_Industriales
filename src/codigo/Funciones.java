@@ -30,10 +30,10 @@ public class Funciones {
             if (op < 1 || op > 9) { 
                 System.out.println("Opción inválida. Seleccione una opción entre 1 y 9.");
             } 
-        } while (op < 1 || op > 10); return op; 
+        } while (op < 1 || op > 9); return op; 
     }
     public static void registrarMaquina(Maquina[] maquinas, int[] totalMaquinas, int MAX_MAQUINAS){
-        Scanner scanner = new Scanner(System.in); 
+        
         if(totalMaquinas[0] >= MAX_MAQUINAS){
             System.out.println("No hay espacio para registrar mas Maquinas");
             return;
@@ -142,20 +142,20 @@ public class Funciones {
 
             case 2:
                 System.out.print("Tipo Empaque: ");
-                String tipoEnpaque = scanner.nextLine();
-                while(tipoEnpaque.isBlank()){
+                String tipoEmpaque = scanner.nextLine();
+                while(tipoEmpaque.isBlank()){
                     System.out.println("Ingrese un Tipo valido ");
-                    tipoEnpaque = scanner.nextLine();
+                    tipoEmpaque = scanner.nextLine();
                 }
-                System.out.print("Velocidad Enpaque: ");
+                System.out.print("Velocidad Empaque: ");
                 while(!scanner.hasNextInt()){
                     System.out.println("Debe ingresar un número.");
                     scanner.next();
                 }
-                int velocidadEnpaque = scanner.nextInt();
-                while(velocidadEnpaque <0){
+                int velocidadEmpaque = scanner.nextInt();
+                while(velocidadEmpaque <0){
                     System.out.println("La velocidad no puede ser negativa.");
-                    velocidadEnpaque = scanner.nextInt();
+                    velocidadEmpaque = scanner.nextInt();
                 }
                 System.out.print("¿La máquina tiene Sensor de Seguridad? (true/false): ");
                 while (!scanner.hasNextBoolean()) {
@@ -165,8 +165,8 @@ public class Funciones {
                 boolean sensorSeguridad = scanner.nextBoolean();
                 scanner.nextLine();
 
-                maquinas[totalMaquinas[0]] = new MaquinaEmpaque(codigo,nombre,modelo,tipo,temperatura,velocidad,cantidadPiezas,activa,tipoEnpaque,
-                velocidadEnpaque,sensorSeguridad);
+                maquinas[totalMaquinas[0]] = new MaquinaEmpaque(codigo,nombre,modelo,tipo,temperatura,velocidad,cantidadPiezas,activa,tipoEmpaque,
+                velocidadEmpaque,sensorSeguridad);
                 break;
 
             case 3:
@@ -206,7 +206,6 @@ public class Funciones {
         System.out.println("====================================");
         System.out.println("Máquina registrada correctamente.");
         System.out.println("====================================");
-        scanner.close();
     }
     public static void mostrarTodasLasMaquinas(Maquina[] maquinas, int totalMaquinas){
         if(totalMaquinas ==0){
@@ -304,7 +303,7 @@ public class Funciones {
         }
         System.out.println("===========MAQUINAS REGISTRADAS ==========");
         System.out.println("Maquinas de Produccion_: " + maquinaProduccion);
-        System.out.println("Maquinas de Enbarque: " + maquinaEmpaque);
+        System.out.println("Máquinas de empaque: " + maquinaEmpaque);
         System.out.println("Robot: " + robotIndustrial);
     }
     public static void realizarMantenimiento(Maquina[] maquinas, int totalMaquinas) {

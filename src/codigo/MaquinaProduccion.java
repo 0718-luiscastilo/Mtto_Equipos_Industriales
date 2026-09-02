@@ -48,11 +48,11 @@ public class MaquinaProduccion extends Maquina implements Mantenible, Monitoreab
     }
     public void activarModoAutomatico(){
         modoAutomatico = true;
-        System.out.println("El modo Ayutomatico esta activado");
+        System.out.println("El modo Automatico esta activado");
     }
     public void desactivarModoAutomatico(){
         modoAutomatico = false;
-        System.out.println("El modo Ayutomatico esta desactivado");
+        System.out.println("El modo Automatico esta desactivado");
     }
     @Override
     public void realizarMantenimiento() {
@@ -60,7 +60,7 @@ public class MaquinaProduccion extends Maquina implements Mantenible, Monitoreab
     }
     @Override
     public void mostrarEstadoMantenimiento() {
-        System.out.println("EDl mantenimiento ya se realizo");
+        System.out.println("El mantenimiento ya se realizo");
     }
     @Override
     public void iniciarMonitoreo() {

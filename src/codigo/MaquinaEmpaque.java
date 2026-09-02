@@ -42,8 +42,8 @@ public class MaquinaEmpaque extends Maquina implements Mantenible, Monitoreable{
     public void mostrarInformacion(){
         System.out.println("---------------------------");
         super.mostrarInformacion();
-        System.out.println("Tipo de Enpaque: " + tipoEmpaque);
-        System.out.println("Velocidad de Enpaque: " + velocidadEmpaque);
+        System.out.println("Tipo de Empaque: " + tipoEmpaque);
+        System.out.println("Velocidad de Empaque: " + velocidadEmpaque);
         System.out.println("Sensor de Seguridad: " + sensorSeguridad);
     }
     public void activarSensorSeguridad(){
