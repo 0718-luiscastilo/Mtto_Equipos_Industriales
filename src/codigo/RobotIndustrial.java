@@ -1,6 +1,6 @@
 package codigo;
 
-public class RobotIndustrial extends Maquina {
+public class RobotIndustrial extends Maquina implements Mantenible, Monitoreable{
     private String tipoRobot;
     private int numeroEjes;
     private boolean visionArtificial;
@@ -54,5 +54,22 @@ public class RobotIndustrial extends Maquina {
         visionArtificial = false;
         System.out.println("La Vision Artificial esta desactivado");
     }
+    @Override
+    public void realizarMantenimiento() {
+        System.out.println("A la Maquina se le tiene que realizar un mantenimiento");
+    }
+    @Override
+    public void mostrarEstadoMantenimiento() {
+        System.out.println("EDl mantenimiento ya se realizo");
+    }
+    @Override
+    public void iniciarMonitoreo() {
+        System.out.println("Iniciando monitoreo de la maquina...");
+    }
+        @Override
+    public void detenerMonitoreo() {
+        System.out.println("Deteniendo monitoreo de la maquina...");
+    }
+
 
 }

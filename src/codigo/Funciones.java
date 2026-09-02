@@ -283,4 +283,99 @@ public class Funciones {
         System.out.println("==========================================");
         System.out.println("El promedio de temperatura de las máquinas es: " + promedioTemperatura + " °C");
     }
+    public static void contarMaquinasPorTipo(Maquina[] maquinas, int totalMaquinas){
+        if(totalMaquinas ==0){
+            System.out.println("No hay ninguna maquina registrada");
+            return;
+        }
+        int maquinaProduccion = 0;
+        int maquinaEmpaque = 0;
+        int robotIndustrial = 0;
+        for(int i =0; i<totalMaquinas;i++){
+            if(maquinas[i] instanceof MaquinaProduccion){
+            maquinaProduccion++;
+            }
+            if(maquinas[i] instanceof MaquinaEmpaque){
+            maquinaEmpaque++;
+            }
+            if(maquinas[i] instanceof RobotIndustrial){
+            robotIndustrial++;
+            }
+        }
+        System.out.println("===========MAQUINAS REGISTRADAS ==========");
+        System.out.println("Maquinas de Produccion_: " + maquinaProduccion);
+        System.out.println("Maquinas de Enbarque: " + maquinaEmpaque);
+        System.out.println("Robot: " + robotIndustrial);
+    }
+    public static void realizarMantenimiento(Maquina[] maquinas, int totalMaquinas) {
+        if (totalMaquinas == 0) {
+            System.out.println("No hay ninguna máquina registrada.");
+            return;
+        }
+        System.out.print("Ingrese el código de la máquina: ");
+        String codigo = scanner.nextLine();
+        while (codigo.isBlank()) {
+            System.out.println("Ingrese un código válido.");
+            codigo = scanner.nextLine();
+        }
+        codigo = codigo.trim();
+        boolean encontrado = false;
+        for (int i = 0; i < totalMaquinas; i++) {
+            if (maquinas[i].getCodigo().equalsIgnoreCase(codigo)) {
+                encontrado = true;
+                if (maquinas[i] instanceof Mantenible) {
+                    Mantenible mantenible = (Mantenible) maquinas[i];
+                    mantenible.realizarMantenimiento();
+                }
+                else{
+                    System.out.println("Esta máquina no permite realizar mantenimiento.");
+                }
+                break;
+            }
+        }
+        if (!encontrado) {
+            System.out.println("No existe ninguna máquina con ese código.");
+        }
+    }
+    public static void monitorearMaquina(Maquina[] maquinas, int totalMaquinas) {
+        if (totalMaquinas == 0) {
+            System.out.println("No hay ninguna máquina registrada.");
+            return;
+        }
+        System.out.print("Ingrese el código de la máquina: ");
+        String codigo = scanner.nextLine();
+        while (codigo.isBlank()) {
+            System.out.println("Ingrese un código válido.");
+            codigo = scanner.nextLine();
+        }
+        codigo = codigo.trim();
+        boolean encontrado = false;
+        for (int i = 0; i < totalMaquinas; i++) {
+            if (maquinas[i].getCodigo().equalsIgnoreCase(codigo)) {
+                encontrado = true;
+                if (maquinas[i] instanceof Monitoreable) {
+                    Monitoreable monitoreable = (Monitoreable) maquinas[i];
+                    System.out.println("\n===== MONITOREO =====");
+                    System.out.println("1. Iniciar monitoreo");
+                    System.out.println("2. Detener monitoreo");
+                    System.out.print("Seleccione una opción: ");
+                    int opcion = scanner.nextInt();
+                    scanner.nextLine();
+                    if (opcion == 1) {
+                        monitoreable.iniciarMonitoreo();
+                    } else if (opcion == 2) {
+                        monitoreable.detenerMonitoreo();
+                    } else {
+                        System.out.println("Opción no válida.");
+                    }
+                } else {
+                    System.out.println("Esta máquina no permite realizar monitoreo.");
+                }
+            break;
+            }
+        }
+        if (!encontrado) {
+            System.out.println("No existe ninguna máquina con ese código.");
+        }
+    }
 }

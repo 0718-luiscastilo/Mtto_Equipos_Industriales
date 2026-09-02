@@ -1,6 +1,6 @@
 package codigo;
 
-public class MaquinaEmpaque extends Maquina {
+public class MaquinaEmpaque extends Maquina implements Mantenible, Monitoreable{
     private String tipoEmpaque;
     private int velocidadEmpaque;
     private boolean sensorSeguridad;
@@ -53,5 +53,22 @@ public class MaquinaEmpaque extends Maquina {
     public void desactivarSensorSeguridad(){
         sensorSeguridad = false;
         System.out.println("El Sensor de Seguridad esta desactivado");
-    } 
+    }
+    @Override
+    public void realizarMantenimiento() {
+        System.out.println("A la Maquina se le tiene que realizar un mantenimiento");
+    }
+    @Override
+    public void mostrarEstadoMantenimiento() {
+        System.out.println("EDl mantenimiento ya se realizo");
+    }
+    @Override
+    public void iniciarMonitoreo() {
+        System.out.println("Iniciando monitoreo de la maquina...");
+    }
+        @Override
+    public void detenerMonitoreo() {
+        System.out.println("Deteniendo monitoreo de la maquina...");
+    }
+
 }

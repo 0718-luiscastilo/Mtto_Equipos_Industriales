@@ -1,6 +1,6 @@
 package codigo;
 
-public class MaquinaProduccion extends Maquina {
+public class MaquinaProduccion extends Maquina implements Mantenible, Monitoreable{
     private String tipoProducto;
     private int piezasPorHora;
     private boolean modoAutomatico;
@@ -53,5 +53,22 @@ public class MaquinaProduccion extends Maquina {
     public void desactivarModoAutomatico(){
         modoAutomatico = false;
         System.out.println("El modo Ayutomatico esta desactivado");
-    } 
+    }
+    @Override
+    public void realizarMantenimiento() {
+        System.out.println("A la Maquina se le tiene que realizar un mantenimiento");
+    }
+    @Override
+    public void mostrarEstadoMantenimiento() {
+        System.out.println("EDl mantenimiento ya se realizo");
+    }
+    @Override
+    public void iniciarMonitoreo() {
+        System.out.println("Iniciando monitoreo de la maquina...");
+    }
+        @Override
+    public void detenerMonitoreo() {
+        System.out.println("Deteniendo monitoreo de la maquina...");
+    }
+
 }
